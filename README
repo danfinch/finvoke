@@ -1,0 +1,30 @@
+
+FInvoke is a remote procedure call (RPC) library for F#.
+
+  * Communicate between threads, processes, or machines
+  * Service proxies are strongly-typed F# objects
+  * Implements JSON-RPC 2.0
+  * Transports supported include HTTP, named pipes, and plain TCP
+  * Supports JSON and binary BSON
+  * HTTP binding produces JavaScript/XMLHTTPRequest (AJAX) proxies
+
+Dependencies (included):
+
+  * FSharp PowerPack
+  * Futility: https://github.com/danfinch/futility
+  * JSON.NET: http://json.codeplex.com/
+  * FSerial: https://github.com/danfinch/fserial
+  * FGateway: https://github.com/danfinch/fgateway
+  
+License: Apache 2.0
+
+Copyrights:
+
+  * All code (c) 2012 Promitheia
+
+Maintainers:
+
+  * Dan Finch (d@nfin.ch)
+
+
+  
