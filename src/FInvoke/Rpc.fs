@@ -12,6 +12,8 @@ namespace FInvoke
 // todo: support streaming IEnumerable/IObservable/etc.
 // todo: support services with no namespaces (bug)
 // todo: allow suppressing debug messages
+// todo: allow for skipping mapping and return a dynamic object
+// todo: when extensibility is implemented in FSerial, allow custom serializers
 
 open System
 open System.Reflection
@@ -241,26 +243,31 @@ module Proxy =
     FSharpValue.MakeRecord (serviceType, ps)
     :?> 's
 
-  let http format (address : string) =
+  let http format timeoutMS (address : string) =
     let connect () =
       let http = WebRequest.Create address
       http.Method <- "POST"
+      http.Timeout <- timeoutMS
       lazy http.GetResponse().GetResponseStream()
       , http.GetRequestStream ()
       , fun _ -> ()
     create format connect
 
-  let tcp format (ipAddress : IPAddress) (port : int) =
+  let tcp format timeoutMS (ipAddress : IPAddress) (port : int) =
     let connect () =
       let tcp = new TcpClient ()
+      tcp.SendTimeout <- timeoutMS
+      tcp.ReceiveTimeout <- timeoutMS
       tcp.Connect (ipAddress, port)
       let s = tcp.GetStream () :> Stream
       lazy s, s, tcp.Close
     create format connect
 
-  let namedPipe format pipeName =
+  let namedPipe format timeoutMS pipeName =
     let connect () =
       let pipe = new NamedPipeClientStream (pipeName)
+      pipe.ReadTimeout <- timeoutMS
+      pipe.WriteTimeout <- timeoutMS
       pipe.Connect ()
       let pipe = pipe :> Stream
       lazy pipe, pipe, pipe.Dispose
