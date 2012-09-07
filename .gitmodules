@@ -1,0 +1,12 @@
+[submodule "lib/futility"]
+	path = lib/futility
+	url = https://github.com/danfinch/futility.git
+[submodule "lib/fgateway"]
+	path = lib/fgateway
+	url = https://github.com/danfinch/fgateway.git
+[submodule "lib/fserial"]
+	path = lib/fserial
+	url = https://github.com/danfinch/fserial.git
+[submodule "lib/jsonnet"]
+	path = lib/jsonnet
+	url = https://github.com/JamesNK/Newtonsoft.Json.git
