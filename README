@@ -15,11 +15,7 @@ Dependencies (submodules):
   * FSerial: https://github.com/danfinch/fserial
   * FGateway: https://github.com/danfinch/fgateway
   
-License: Apache 2.0
-
-Copyrights:
-
-  * All code (c) 2012 Promitheia
+License: Public Domain
 
 Maintainers:
 
